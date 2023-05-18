@@ -29,11 +29,6 @@ class OnBoarding1Fragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val sharedPreferences = requireActivity().getPreferences(Context.MODE_PRIVATE)
-        val deger = sharedPreferences.getString("anahtar", "false")
-        if (deger=="true"){
-            findNavController().navigate(R.id.action_onBoarding1Fragment2_to_homeFragment)
-        }
         binding.imageView6.setOnClickListener {
             findNavController().navigate(R.id.action_onBoarding1Fragment2_to_onBoarding2Fragment)
         }
