@@ -3,10 +3,13 @@
     <style name="Base.Theme.BabyTracker" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/white</item>
+
     </style>
 
     <style name="Theme.BabyTracker" parent="Base.Theme.BabyTracker" >
-
+        <item name="android:statusBarColor">@color/white</item>
         <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
     </style>

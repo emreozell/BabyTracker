@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.example.babytracker.R
@@ -15,6 +16,7 @@ import com.example.babytracker.databinding.FragmentInAppBinding
 class InAppFragment : Fragment() {
     private lateinit var _binding: FragmentInAppBinding
     private val binding get() = _binding!!
+    lateinit var deger:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -37,9 +39,9 @@ class InAppFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.cancleButton.setOnClickListener {
             val sharedPreferences = requireActivity().getPreferences(Context.MODE_PRIVATE)
-            val deger = sharedPreferences.getString("anahtar", "false")
+            val deger22 = sharedPreferences.getString("anahtar", "false")
 
-            if (deger=="true"){
+            if (deger22=="true"){
                 findNavController().navigate(R.id.action_inAppFragment_to_homeFragment)
             }else{
                 findNavController().navigate(R.id.action_inAppFragment_to_loginInformationFragment)
@@ -47,12 +49,14 @@ class InAppFragment : Fragment() {
         }
         binding.imageView17.setOnClickListener {
             binding.cancleButton.isVisible=true
+            deger="true"
             binding.imageView17.setImageResource(R.drawable.rectangle_4006)
             binding.imageView18.setImageResource(R.drawable.rectangle_4006_1)
             binding.imageView19.setImageResource(R.drawable.rectangle_4006_1)
         }
         binding.imageView18.setOnClickListener {
             binding.cancleButton.isVisible=true
+            deger="true"
             binding.imageView17.setImageResource(R.drawable.rectangle_4006_1)
             binding.imageView18.setImageResource(R.drawable.rectangle_4006)
             binding.imageView19.setImageResource(R.drawable.rectangle_4006_1)
@@ -60,9 +64,23 @@ class InAppFragment : Fragment() {
         }
         binding.imageView19.setOnClickListener {
             binding.cancleButton.isVisible=true
+            deger="true"
             binding.imageView17.setImageResource(R.drawable.rectangle_4006_1)
             binding.imageView18.setImageResource(R.drawable.rectangle_4006_1)
             binding.imageView19.setImageResource(R.drawable.rectangle_4006)
+
+
+        }
+        binding.imageView26.setOnClickListener {
+            if(deger=="true"){
+                val sharedPreferences = requireActivity().getPreferences(Context.MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+                editor.putString("premium", "true")
+                editor.apply()
+                findNavController().navigate(R.id.action_inAppFragment_to_homeFragment)
+            }else{
+                Toast.makeText(requireContext(),"Please Select",Toast.LENGTH_SHORT).show()
+            }
 
 
         }

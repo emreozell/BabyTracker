@@ -17,7 +17,12 @@ class OnBoarding1Fragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val sharedPreferences = requireActivity().getPreferences(Context.MODE_PRIVATE)
+        val deger22 = sharedPreferences.getString("anahtar", "false")
 
+        if (deger22=="true"){
+            findNavController().navigate(R.id.action_onBoarding1Fragment2_to_homeFragment)
+        }
     }
 
     override fun onCreateView(
